@@ -24,11 +24,5 @@ class UserSeeder extends Seeder
             'password' => bcrypt('12qwaszx'),
         ]);
 
-        $tenant->users()->create([
-            'name' => 'belly',
-            'email' => 'belly@upgest.com.br',
-            'password' => bcrypt('belly')
-        ]);
-
     }
 }

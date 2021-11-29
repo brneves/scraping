@@ -41,42 +41,4 @@ class Tenant extends Model
         return $this->belongsTo(Plano::class);
     }
 
-    /**
-     * Retorna os clientes do tenant
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function clientes()
-    {
-        return $this->hasMany(Cliente::class);
-    }
-
-    /**
-     * Retorna os produtos do tenant
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function produtos()
-    {
-        return $this->hasMany(Produto::class);
-    }
-
-    public function faturas()
-    {
-        return $this->hasMany(Fatura::class);
-    }
-
-    public function categoriasFatura()
-    {
-        return $this->hasMany(CategoriaFatura::class);
-    }
-
-    public function compras()
-    {
-        return $this->hasMany(Compra::class);
-    }
-
-    public function categorias()
-    {
-        return $this->hasMany(CategoriaProduto::class);
-    }
-
 }
