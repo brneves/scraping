@@ -43,7 +43,9 @@ class TipoMarcacaoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->repository->create($request->all());
+
+        return redirect()->route('tipos-marcacao.index');
     }
 
     /**

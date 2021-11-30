@@ -17,6 +17,6 @@ class TipoMarcacao extends Model
 
     public function marcacoes()
     {
-        return $this->belongsToMany(Marcacao::class);
+        return $this->hasMany(Marcacao::class);
     }
 }

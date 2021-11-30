@@ -4,7 +4,8 @@ use App\Http\Controllers\PainelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     ProvedorController,
-    TipoMarcacaoController
+    TipoMarcacaoController,
+    ServicoController
 };
 
 Route::get('/', function () {
@@ -22,4 +23,6 @@ Route::prefix('painel')->middleware('auth')->group(function (){
     Route::resource('/provedores', ProvedorController::class);
     //TIPOS DE MARCAÇÃO
     Route::resource('/tipos-marcacao', TipoMarcacaoController::class);
+    //SERVIÇO
+    Route::resource('/sercicos', ServicoController::class);
 });

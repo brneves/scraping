@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Provedor extends Model
 {
     use HasFactory;
+
+    public function servico()
+    {
+        return $this->hasMany(Marcacao::class);
+    }
 }

@@ -23,11 +23,27 @@
 
 
         <li class="nav-item">
-            <a class="nav-link @if(request()->is('painel/categorias*')) active @endif" href="">
+            <a class="nav-link @if(request()->is('painel/provedores*')) active @endif" href="">
                 <i class="fas fa-layer-group"></i>
                 Provedores
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link @if(request()->is('painel/servicos*')) active @endif" href="">
+                <i class="fas fa-layer-group"></i>
+                Serviços
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link @if(request()->is('painel/tipos-marcacao*')) active @endif" href="{{ route('tipos-marcacao.index') }}">
+                <i class="fas fa-layer-group"></i>
+                Tipos de Marcação
+            </a>
+        </li>
+
+
 
 
     </ul>
