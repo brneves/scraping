@@ -54,9 +54,12 @@ class TipoMarcacaoController extends Controller
      * @param  \App\Models\TipoMarcacao  $tipoMarcacao
      * @return \Illuminate\Http\Response
      */
-    public function show(TipoMarcacao $tipoMarcacao)
+    public function show($tipoMarcacao)
     {
-        //
+        if (!$tipo = $this->repository->find($tipoMarcacao))
+            return redirect()->back();
+
+        return view('admin.pages.tipo-marcacao.show', compact('tipo'));
     }
 
     /**
@@ -65,9 +68,12 @@ class TipoMarcacaoController extends Controller
      * @param  \App\Models\TipoMarcacao  $tipoMarcacao
      * @return \Illuminate\Http\Response
      */
-    public function edit(TipoMarcacao $tipoMarcacao)
+    public function edit($tipoMarcacao)
     {
-        //
+        if (!$tipo = $this->repository->find($tipoMarcacao))
+            return redirect()->back();
+
+        return view('admin.pages.tipo-marcacao.edit', compact('tipo'));
     }
 
     /**
@@ -77,9 +83,15 @@ class TipoMarcacaoController extends Controller
      * @param  \App\Models\TipoMarcacao  $tipoMarcacao
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoMarcacao $tipoMarcacao)
+    public function update(Request $request, $tipoMarcacao)
     {
-        //
+        if (!$tipo = $this->repository->find($tipoMarcacao))
+            return redirect()->back();
+
+        $tipo->update($request->all());
+
+        return redirect()->route('tipos-marcacao.index');
+
     }
 
     /**
@@ -88,8 +100,13 @@ class TipoMarcacaoController extends Controller
      * @param  \App\Models\TipoMarcacao  $tipoMarcacao
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TipoMarcacao $tipoMarcacao)
+    public function destroy($tipoMarcacao)
     {
-        //
+        if (!$tipo = $this->repository->find($tipoMarcacao))
+            return redirect()->back();
+
+        $tipo->delete();
+
+        return redirect()->route('tipos-marcacao.index');
     }
 }

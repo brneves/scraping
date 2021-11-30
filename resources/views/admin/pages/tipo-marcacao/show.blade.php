@@ -11,7 +11,7 @@
         <div class="card-body">
             <p><strong>Cargo:</strong> {{ $tipo->tipo }}</p>
 
-            <form action="{{ route('tipos-marcacao.destroy', $tipo->uuid) }}" method="post">
+            <form action="{{ route('tipos-marcacao.destroy', $tipo->id) }}" method="post">
                 @method('DELETE')
                 @csrf
                 <button type="submit" class="btn btn-danger">Excluir o tipo <strong>{{ $tipo->tipo }}</strong></button>

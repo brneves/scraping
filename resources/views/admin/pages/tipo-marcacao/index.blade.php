@@ -34,8 +34,8 @@
                                     <tr>
                                         <th scope="row">{{ $tipo->tipo }}</th>
                                         <td>
-                                            <a href="{{ route('tipos.show', $tipo->uuid) }}" class="btn btn-info" title="Ver"><i class="batch-icon batch-icon-eye"></i></a>
-                                            <a href="{{ route('tipos.edit', $tipo->uuid) }}" class="btn btn-warning" title="Editar"><i class="batch-icon batch-icon-compose-alt-2"></i></a>
+                                            <a href="{{ route('tipos-marcacao.show', $tipo->id) }}" class="btn btn-info" title="Ver"><i class="batch-icon batch-icon-eye"></i></a>
+                                            <a href="{{ route('tipos-marcacao.edit', $tipo->id) }}" class="btn btn-warning" title="Editar"><i class="batch-icon batch-icon-compose-alt-2"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

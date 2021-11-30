@@ -10,7 +10,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('tipos-marcacao.update', $tipo->uuid) }}" method="post" class="form">
+            <form action="{{ route('tipos-marcacao.update', $tipo->id) }}" method="post" class="form">
                 @csrf
                 @method('PUT')
                 @if($errors->any())
