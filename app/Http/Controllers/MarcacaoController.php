@@ -3,10 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Marcacao;
+use Goutte\Client;
 use Illuminate\Http\Request;
 
 class MarcacaoController extends Controller
 {
+    protected $repository;
+    private $results = [];
+
+    /**
+     * MarcacaoController constructor.
+     */
+    public function __construct(Marcacao $marcacao)
+    {
+        $this->repository = $marcacao;
+    }
+
+    public function scraper()
+    {
+        $client = new Client();
+
+        $url = 'https://www.wikitelecom.com.br/#internet';
+        $page = $client->request('GET', $url);
+        dd($page);
+    }
+
     /**
      * Display a listing of the resource.
      *
