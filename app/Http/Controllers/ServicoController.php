@@ -7,6 +7,18 @@ use Illuminate\Http\Request;
 
 class ServicoController extends Controller
 {
+
+    protected $repository;
+
+    /**
+     * ServicoController constructor.
+     */
+    public function __construct(Servico $servico)
+    {
+        $this->repository = $servico;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +26,8 @@ class ServicoController extends Controller
      */
     public function index()
     {
-        //
+        $servicos = $this->repository->paginate();
+        return view('admin.pages.servicos.index', compact('servicos'));
     }
 
     /**
@@ -24,7 +37,7 @@ class ServicoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.servicos.create');
     }
 
     /**
@@ -35,7 +48,9 @@ class ServicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->repository->create($request->all());
+
+        return redirect()->route('servicos.index');
     }
 
     /**
@@ -44,9 +59,12 @@ class ServicoController extends Controller
      * @param  \App\Models\Servico  $servico
      * @return \Illuminate\Http\Response
      */
-    public function show(Servico $servico)
+    public function show($servico)
     {
-        //
+        if (!$servico = $this->repository->find($servico))
+            return redirect()->back();
+
+        return view('admin.pages.servicos.show', compact('servico'));
     }
 
     /**
@@ -55,9 +73,12 @@ class ServicoController extends Controller
      * @param  \App\Models\Servico  $servico
      * @return \Illuminate\Http\Response
      */
-    public function edit(Servico $servico)
+    public function edit($servico)
     {
-        //
+        if (!$servico = $this->repository->find($servico))
+            return redirect()->back();
+
+        return view('admin.pages.servicos.edit', compact('servico'));
     }
 
     /**
@@ -67,9 +88,14 @@ class ServicoController extends Controller
      * @param  \App\Models\Servico  $servico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Servico $servico)
+    public function update(Request $request, $servico)
     {
-        //
+        if (!$servico = $this->repository->find($servico))
+            return redirect()->back();
+
+        $servico->update($request->all());
+
+        return redirect()->route('servicos.index');
     }
 
     /**
@@ -78,8 +104,13 @@ class ServicoController extends Controller
      * @param  \App\Models\Servico  $servico
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Servico $servico)
+    public function destroy($servico)
     {
-        //
+        if (!$servico = $this->repository->find($servico))
+            return redirect()->back();
+
+        $servico->delete();
+
+        return redirect()->route('servicos.index');
     }
 }

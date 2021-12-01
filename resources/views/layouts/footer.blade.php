@@ -34,9 +34,6 @@
 <!-- QuillPro Scripts -->
 <script type="text/javascript" src="{{ asset('js/scripts-jquery.js') }}"></script>
 
-@toastr_js
-@toastr_render
-
 @yield('scripts')
 
 </body>

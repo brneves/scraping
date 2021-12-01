@@ -21,7 +21,6 @@
 
     <!-- CSS - OPTIONAL - START -->
 
-    @toastr_css
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
 
     <!-- CSS - OPTIONAL - END -->

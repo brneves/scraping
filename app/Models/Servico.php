@@ -9,6 +9,10 @@ class Servico extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'servico'
+    ];
+
     public function marcacao()
     {
         return $this->hasMany(Marcacao::class);

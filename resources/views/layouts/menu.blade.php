@@ -30,7 +30,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link @if(request()->is('painel/servicos*')) active @endif" href="">
+            <a class="nav-link @if(request()->is('painel/servicos*')) active @endif" href="{{ route('servicos.index') }}">
                 <i class="fas fa-layer-group"></i>
                 Serviços
             </a>

@@ -2,11 +2,7 @@
 
 use App\Http\Controllers\PainelController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{
-    ProvedorController,
-    TipoMarcacaoController,
-    ServicoController
-};
+use App\Http\Controllers\{ProvedorController, TipoMarcacaoController, ServicoController, UserController};
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,5 +20,10 @@ Route::prefix('painel')->middleware('auth')->group(function (){
     //TIPOS DE MARCAÇÃO
     Route::resource('/tipos-marcacao', TipoMarcacaoController::class);
     //SERVIÇO
-    Route::resource('/sercicos', ServicoController::class);
+    Route::resource('/servicos', ServicoController::class);
+
+    Route::resource('usuarios', UserController::class);
+    Route::get('perfil', [UserController::class, 'perfil'])->name('usuarios.perfil');
+    Route::post('perfil/foto', [UserController::class, 'fotoPerfil'])->name('usuarios.foto');
+
 });
