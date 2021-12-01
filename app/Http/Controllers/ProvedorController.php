@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class ProvedorController extends Controller
 {
+    protected $repository;
+
+    /**
+     * ProvedorController constructor.
+     */
+    public function __construct(Provedor $provedor)
+    {
+        $this->repository = $provedor;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +25,8 @@ class ProvedorController extends Controller
      */
     public function index()
     {
-        //
+        $provedores = $this->repository->paginate();
+        return view('admin.pages.provedores.index', compact('provedores'));
     }
 
     /**
@@ -24,7 +36,7 @@ class ProvedorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.provedores.create');
     }
 
     /**
@@ -35,7 +47,9 @@ class ProvedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->repository->create($request->all());
+
+        return redirect()->route('provedores.index');
     }
 
     /**
@@ -44,9 +58,12 @@ class ProvedorController extends Controller
      * @param  \App\Models\Provedor  $provedor
      * @return \Illuminate\Http\Response
      */
-    public function show(Provedor $provedor)
+    public function show($provedor)
     {
-        //
+        if (!$provedor = $this->repository->find($provedor))
+            return redirect()->back();
+
+        return view('admin.pages.provedores.show', compact('provedor'));
     }
 
     /**
@@ -55,9 +72,12 @@ class ProvedorController extends Controller
      * @param  \App\Models\Provedor  $provedor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Provedor $provedor)
+    public function edit($provedor)
     {
-        //
+        if (!$provedor = $this->repository->find($provedor))
+            return redirect()->back();
+
+        return view('admin.pages.provedores.edit', compact('provedor'));
     }
 
     /**
@@ -67,9 +87,14 @@ class ProvedorController extends Controller
      * @param  \App\Models\Provedor  $provedor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Provedor $provedor)
+    public function update(Request $request, $provedor)
     {
-        //
+        if (!$provedor = $this->repository->find($provedor))
+            return redirect()->back();
+
+        $provedor->update($request->all());
+
+        return redirect()->route('provedores.index');
     }
 
     /**
@@ -78,8 +103,13 @@ class ProvedorController extends Controller
      * @param  \App\Models\Provedor  $provedor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Provedor $provedor)
+    public function destroy($provedor)
     {
-        //
+        if (!$provedor = $this->repository->find($provedor))
+            return redirect()->back();
+
+        $provedor->delete();
+
+        return redirect()->route('provedores.index');
     }
 }

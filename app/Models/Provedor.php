@@ -9,6 +9,12 @@ class Provedor extends Model
 {
     use HasFactory;
 
+    protected $table = 'provedores';
+
+    protected $fillable = [
+        'provedor'
+    ];
+
     public function servico()
     {
         return $this->hasMany(Marcacao::class);

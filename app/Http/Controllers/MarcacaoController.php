@@ -44,7 +44,7 @@ class MarcacaoController extends Controller
      * @param  \App\Models\Marcacao  $marcacao
      * @return \Illuminate\Http\Response
      */
-    public function show(Marcacao $marcacao)
+    public function show($marcacao)
     {
         //
     }
@@ -55,7 +55,7 @@ class MarcacaoController extends Controller
      * @param  \App\Models\Marcacao  $marcacao
      * @return \Illuminate\Http\Response
      */
-    public function edit(Marcacao $marcacao)
+    public function edit($marcacao)
     {
         //
     }
@@ -67,7 +67,7 @@ class MarcacaoController extends Controller
      * @param  \App\Models\Marcacao  $marcacao
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Marcacao $marcacao)
+    public function update(Request $request, $marcacao)
     {
         //
     }
@@ -78,7 +78,7 @@ class MarcacaoController extends Controller
      * @param  \App\Models\Marcacao  $marcacao
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Marcacao $marcacao)
+    public function destroy($marcacao)
     {
         //
     }

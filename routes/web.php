@@ -17,6 +17,7 @@ Route::prefix('painel')->middleware('auth')->group(function (){
 
     //PROVEDORES
     Route::resource('/provedores', ProvedorController::class);
+
     //TIPOS DE MARCAÇÃO
     Route::resource('/tipos-marcacao', TipoMarcacaoController::class);
     //SERVIÇO

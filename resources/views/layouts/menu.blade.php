@@ -23,7 +23,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link @if(request()->is('painel/provedores*')) active @endif" href="">
+            <a class="nav-link @if(request()->is('painel/provedores*')) active @endif" href="{{ route('provedores.index') }}">
                 <i class="fas fa-layer-group"></i>
                 Provedores
             </a>
