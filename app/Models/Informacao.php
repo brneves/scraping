@@ -5,18 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Provedor extends Model
+class Informacao extends Model
 {
     use HasFactory;
 
-    protected $table = 'provedores';
-
+    protected $table = 'informacoes';
     protected $fillable = [
-        'provedor'
+        'chave',
+        'valor'
     ];
 
-    public function marcacoes()
+    public function marcacao()
     {
-        return $this->hasMany(Marcacao::class, 'provedores_id');
+        return $this->belongsTo(Marcacao::class);
     }
+
 }

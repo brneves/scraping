@@ -28,11 +28,14 @@ Route::prefix('painel')->middleware('auth')->group(function (){
     Route::resource('/tipos-marcacao', TipoMarcacaoController::class);
     //SERVIÇO
     Route::resource('/servicos', ServicoController::class);
+    //MARCAÇÕES
+    Route::resource('/provedor/{provedor}/marcacao', MarcacaoController::class);
+    Route::get('/scraper', [MarcacaoController::class, 'scraper'])->name('scraper');
 
     Route::resource('usuarios', UserController::class);
     Route::get('perfil', [UserController::class, 'perfil'])->name('usuarios.perfil');
     Route::post('perfil/foto', [UserController::class, 'fotoPerfil'])->name('usuarios.foto');
 
-    Route::get('scraper', [MarcacaoController::class, 'scraper'])->name('scraper');
+
 
 });

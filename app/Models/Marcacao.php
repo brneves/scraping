@@ -28,6 +28,11 @@ class Marcacao extends Model
 
     public function provedor()
     {
-        return $this->belongsTo(Provedor::class);
+        return $this->belongsTo(Provedor::class, 'provedores_id');
+    }
+
+    public function informacoes()
+    {
+        return $this->hasMany(Informacao::class);
     }
 }
